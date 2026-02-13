@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maiz Todo App</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="style.css">
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+
+</head>
+<body class="min-h-screen bg-gray-50">
+
+<div class="max-w-2xl mx-auto mt-10 mb-10 p-8 bg-white shadow-sm rounded-lg border border-gray-200">
+
+<div class="flex items-center justify-center mb-8">
+    <div class="bg-gray-900 p-3 rounded-lg">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path>
+        </svg>
+    </div>
+    <h1 class="text-3xl font-light text-gray-900 ml-4">Maiz Todo App</h1>
+</div>
+
+<!-- Task Input -->
+<div class="flex flex-col sm:flex-row gap-3 mb-6">
+    <div class="flex-1">
+        <input id="taskInput" type="text" placeholder="What needs to be done?"
+            class="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors bg-white">
+    </div>
+
+    <select id="priorityInput" class="px-4 py-4 border border-gray-300 rounded-lg focus:outline-none focus:border-gray-900 focus:ring-1 focus:ring-gray-900 transition-colors bg-white">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+    </select>
+
+    <button id="addTaskBtn"
+        class="bg-gray-900 text-white px-6 py-4 rounded-lg hover:bg-gray-800 transition-colors font-light">
+        Add Task
+    </button>
+</div>
+
+<!-- Empty State -->
+<div id="emptyState" class="text-center py-16">
+    <div class="inline-flex items-center justify-center w-16 h-16 bg-gray-100 rounded-full mb-4">
+        <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+        </svg>
+    </div>
+    <p class="text-gray-500 text-lg font-light">No tasks yet</p>
+    <p class="text-gray-400 text-sm mt-2">Add your first task to get started</p>
+</div>
+
+<!-- Task List -->
+<ul id="taskList" class="space-y-3"></ul>
+
+<!-- Stats -->
+<div id="stats" class="mt-8 pt-6 border-t border-gray-200">
+    <div class="flex justify-around text-center">
+        <div>
+            <p class="text-2xl font-light text-gray-900" id="totalTasks">0</p>
+            <p class="text-sm text-gray-500">Total Tasks</p>
+        </div>
+        <div>
+            <p class="text-2xl font-light text-gray-700" id="completedTasks">0</p>
+            <p class="text-sm text-gray-500">Completed</p>
+        </div>
+        <div>
+            <p class="text-2xl font-light text-gray-600" id="pendingTasks">0</p>
+            <p class="text-sm text-gray-500">Pending</p>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
